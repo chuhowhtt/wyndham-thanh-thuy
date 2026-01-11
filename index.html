@@ -1,112 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wyndham Thanh Thủy – Nghỉ dưỡng khoáng nóng Phú Thọ</title>
-  <meta name="description" content="Đặt combo nghỉ dưỡng, thuê căn hộ, vé tắm khoáng nóng Ohayo Onsen tại Wyndham Thanh Thủy, Phú Thọ." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Du lịch nghỉ dưỡng khoáng nóng – Wyndham Thanh Thủy, Phú Thọ</title>
+  <meta name="description" content="Combo nghỉ dưỡng, thuê căn hộ/villa, vé tắm khoáng nóng (Ohayo Onsen) tại Wyndham Thanh Thủy – tư vấn nhanh, đặt dễ."/>
   <style>
-    body {margin:0;font-family:Arial, Helvetica, sans-serif;color:#222;line-height:1.6}
-    header {background:#0f766e;color:#fff;padding:20px}
-    header h1 {margin:0;font-size:28px}
-    nav a {color:#fff;margin-right:15px;text-decoration:none;font-weight:600}
-    .hero {background-image:url('images/banner.jpg');height:420px;background-size:cover;background-position:center;display:flex;align-items:center}
-    .hero .box {background:rgba(0,0,0,0.55);color:#fff;padding:30px;margin-left:40px;max-width:520px}
-    section {padding:40px}
-    h2 {color:#0f766e}
-    .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-    .card {border:1px solid #ddd;border-radius:10px;overflow:hidden}
-    .card img {width:100%;height:180px;object-fit:cover}
-    .card .content {padding:15px}
-    footer {background:#f3f3f3;padding:20px;text-align:center;font-size:14px}
-    .btn {display:inline-block;background:#0f766e;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
-    .zalo-float{position:fixed;right:20px;bottom:20px;background:#06c755;color:#fff;padding:14px 18px;border-radius:50px;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.25);z-index:999}
-  .zalo-float:hover{opacity:.9}
-</style>
+    :root{
+      --bg:#fff;
+      --ink:#0b1220;
+      --muted:#5b6475;
+      --card:#f6f7f9;
+      --line:#e7e9ee;
+      --accent:#0f766e;
+      --accent2:#111827;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:14px;border:1px solid var(--line);
+      font-weight:650;cursor:pointer;background:#fff;
+    }
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn.dark{background:var(--accent2);border-color:var(--accent2);color:#fff}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:#eef7f6;color:var(--accent);font-weight:650;font-size:13px}
+    header{
+      position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:14px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:850}
+    .logo-badge{width:34px;height:34px;border-radius:12px;background:var(--accent);display:inline-block}
+    .menu{display:flex;gap:16px;align-items:center}
+    .menu a{font-weight:600;color:var(--muted)}
+    .menu a:hover{color:var(--ink)}
+    .hero{
+      padding:42px 0 18px;
+      background:
+        radial-gradient(1100px 600px at 20% 0%, rgba(15,118,110,.12), transparent 60%),
+        radial-gradient(900px 520px at 90% 10%, rgba(17,24,39,.10), transparent 62%);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch}
+    .hero h1{font-size:40px;line-height:1.08;margin:12px 0}
+    .hero p{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 18px}
+    .panel{
+      border:1px solid var(--line);border-radius:var(--radius);background:#fff;
+      box-shadow:0 10px 30px rgba(17,24,39,.06);
+    }
+    .panel.pad{padding:18px}
+    .search{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:12px;color:var(--muted);font-weight:650}
+    .field input,.field select{
+      padding:12px 12px;border-radius:14px;border:1px solid var(--line);background:#fff;
+      outline:none;
+    }
+    .field input:focus,.field select:focus{border-color:rgba(15,118,110,.55);box-shadow:0 0 0 4px rgba(15,118,110,.12)}
+    .hero-media{
+      min-height:280px;overflow:hidden;border-radius:var(--radius);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1501117716987-c8e2a0a6b8f4?auto=format&fit=crop&w=1600&q=70");
+      background-size:cover;background-position:center;
+      display:flex;align-items:flex-end;
+    }
+    .hero-media .cap{padding:16px;color:#fff}
+    .cap .t{font-weight:850;font-size:16px}
+    .cap .s{opacity:.92;font-size:13px;margin-top:4px}
+    section{padding:26px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+      overflow:hidden;
+    }
+    .card .img{height:160px;background:#ddd;background-size:cover;background-position:center}
+    .card .bd{padding:14px}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.55}
+    .price{display:flex;align-items:baseline;justify-content:space-between;margin-top:12px;gap:10px}
+    .price .from{color:var(--muted);font-size:13px}
+    .price b{font-size:18px}
+    .kpi{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+    .kpi .k{padding:12px;border-radius:16px;border:1px solid var(--line);background:#fff}
+    .k .n{font-weight:900}
+    .k .d{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.35}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .box{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:16px}
+    .box h2{margin:0 0 8px;font-size:18px}
+    .box p{margin:0;color:var(--muted);line-height:1.6}
+    .faq details{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff}
+    .faq summary{cursor:pointer;font-weight:750}
+    .faq p{color:var(--muted);line-height:1.6;margin:10px 0 0}
+    footer{border-top:1px solid var(--line);padding:20px 0;color:var(--muted)}
+    .stickybar{
+      position:fixed;left:0;right:0;bottom:0;z-index:40;
+      background:rgba(255,255,255,.92);backdrop-filter: blur(10px);
+      border-top:1px solid var(--line);padding:10px 12px;display:none;
+    }
+    .stickybar .row{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:10px}
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr;gap:12px}
+      .search{grid-template-columns:1fr 1fr}
+      .grid3{grid-template-columns:1fr}
+      .kpi{grid-template-columns:repeat(2,1fr)}
+      .split{grid-template-columns:1fr}
+      .menu{display:none}
+      .stickybar{display:block}
+      body{padding-bottom:74px}
+      .hero h1{font-size:32px}
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Wyndham Thanh Thủy</h1>
-  <nav>
-    <a href="#combo">Combo nghỉ dưỡng</a>
-    <a href="#onsen">Tắm khoáng</a>
-    <a href="#rental">Thuê căn hộ</a>
-    <a href="#contact">Liên hệ</a>
-  </nav>
+  <div class="container">
+    <div class="nav">
+      <a class="logo" href="#">
+        <span class="logo-badge" aria-hidden="true"></span>
+        <span>THANH THỦY ONsen Travel</span>
+      </a>
+      <nav class="menu" aria-label="Chính">
+        <a href="#combo">Combo/Voucher</a>
+        <a href="#rental">Thuê căn hộ</a>
+        <a href="#onsen">Vé tắm khoáng</a>
+        <a href="#itinerary">Lịch trình</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+      <a class="btn primary" href="#contact">Nhận báo giá nhanh</a>
+    </div>
+  </div>
 </header>
 
-<div class="hero">
-  <div class="box">
-    <h2>Nghỉ dưỡng khoáng nóng chuẩn 5 sao</h2>
-    <p>Trải nghiệm tắm khoáng nóng Ohayo Onsen – nghỉ dưỡng tại Wyndham Thanh Thủy, Phú Thọ. Phù hợp gia đình & cặp đôi.</p>
-    <a href="https://zalo.me/0913056667" target="_blank" class="btn">Chat Zalo – Nhận báo giá</a>
-    <a href="https://www.booking.com" target="_blank" class="btn" style="background:#003580">Đặt phòng trên Booking.com</a>
+<main>
+  <div class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="panel pad">
+          <span class="pill">Wyndham Lynn Times Thanh Thủy • Phú Thọ</span>
+          <h1>Nghỉ dưỡng khoáng nóng cho chuyến đi 1–2 ngày, đặt nhanh trong 3 phút</h1>
+          <p>
+            Chuyên combo nghỉ dưỡng, thuê căn hộ/villa và vé tắm khoáng (Ohayo Onsen).
+            Tư vấn theo ngân sách, xác nhận nhanh qua Zalo/Hotline.
+          </p>
+
+          <div class="panel pad" style="background:#fff;border:1px solid var(--line)">
+            <div class="search" role="search">
+              <div class="field">
+                <label>Ngày đi</label>
+                <input type="date" />
+              </div>
+              <div class="field">
+                <label>Ngày về</label>
+                <input type="date" />
+              </div>
+              <div class="field">
+                <label>Số khách</label>
+                <select>
+                  <option>2 người</option><option>3 người</option><option>4 người</option>
+                  <option>Nhóm 5–8</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Nhu cầu</label>
+                <select>
+                  <option>Combo 2N1Đ</option>
+                  <option>Đi 1 ngày (vé khoáng)</option>
+                  <option>Thuê căn hộ/villa</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+              <button class="btn dark" type="button" onclick="alert('Demo: kết nối module báo giá / đặt chỗ')">Tìm giá tốt</button>
+              <a class="btn" href="#combo">Xem combo bán chạy</a>
+<a class="btn dark" href="https://www.booking.com/hotel/vn/3-rooms-wyndham-lynn-times-tthanh-thuy-hot-spring-myhome.vi.html" target="_blank">
+  Đặt phòng nhanh trên Booking.com
+</a>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media panel" aria-label="Ảnh minh họa">
+          <div class="cap">
+            <div class="t">Ngâm khoáng – ngủ ngon – hồi năng lượng</div>
+            <div class="s">Thay ảnh thật của bạn tại đây (khuyến nghị ảnh tự chụp/được cấp phép).</div>
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <div class="kpi">
+          <div class="k"><div class="n">Combo linh hoạt</div><div class="d">Trong tuần / cuối tuần / lễ</div></div>
+          <div class="k"><div class="n">Gia đình & cặp đôi</div><div class="d">Gợi ý phòng theo số khách</div></div>
+          <div class="k"><div class="n">Hỗ trợ nhanh</div><div class="d">Zalo/Hotline, xác nhận sớm</div></div>
+          <div class="k"><div class="n">Rõ chính sách</div><div class="d">Đổi ngày/hoàn theo điều kiện</div></div>
+          <div class="k"><div class="n">Check-in đẹp</div><div class="d">Thư viện ảnh – video thực tế</div></div>
+          <div class="k"><div class="n">Xuất hóa đơn</div><div class="d">Theo nhu cầu khách hàng</div></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section id="combo">
+    <div class="container">
+      <div style="display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0;font-size:22px">Combo/Voucher nổi bật</h2>
+          <p style="margin:8px 0 0;color:var(--muted)">Chọn gói phù hợp lịch trình 1–2 ngày, ưu tiên gói “bán chạy”.</p>
+        </div>
+        <a class="btn" href="#contact">Nhờ tư vấn gói phù hợp</a>
+      </div>
+
+      <div class="grid3" style="margin-top:14px">
+        <article class="card">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=70')"></div>
+          <div class="bd">
+            <span class="pill" style="background:#fff">Best-seller</span>
+            <h3>Combo 2N1Đ – Nghỉ dưỡng + trải nghiệm khoáng</h3>
+            <ul>
+              <li>Phù hợp cặp đôi / gia đình nhỏ</li>
+              <li>Tối ưu chi phí cuối tuần</li>
+              <li>Hỗ trợ check-in nhanh</li>
+            </ul>
+            <div class="price">
+              <div><div class="from">Giá từ</div><b>…đ</b></div>
+              <a class="btn primary" href="#contact">Đặt gói này</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="onsen">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=70')"></div>
+          <div class="bd">
+            <span class="pill" style="background:#fff">Đi trong ngày</span>
+            <h3>Vé tắm khoáng/Onsen – thư giãn 1 ngày</h3>
+            <ul>
+              <li>Phù hợp đi nhóm bạn</li>
+              <li>Gợi ý giờ đi – giờ về tối ưu</li>
+              <li>Thêm option ăn uống</li>
+            </ul>
+            <div class="price">
+              <div><div class="from">Giá từ</div><b>…đ</b></div>
+              <a class="btn primary" href="#contact">Nhận giá vé</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" id="rental">
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1600&q=70')"></div>
+          <div class="bd">
+            <span class="pill" style="background:#fff">Nhóm gia đình</span>
+            <h3>Thuê căn hộ/Villa – ở rộng, riêng tư</h3>
+            <ul>
+              <li>Gợi ý căn theo 4–8 khách</li>
+              <li>Check-in tự chủ, hướng dẫn rõ</li>
+              <li>Hỗ trợ set-up sinh nhật (tuỳ chọn)</li>
+            </ul>
+            <div class="price">
+              <div><div class="from">Giá từ</div><b>…đ</b></div>
+              <a class="btn primary" href="#contact">Xem căn trống</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="itinerary">
+    <div class="container">
+      <div class="split">
+        <div class="box">
+          <h2>Lịch trình gợi ý: 1 ngày</h2>
+          <p>
+            Sáng xuất phát → trưa check-in / ăn nhẹ → chiều tắm khoáng, xông hơi, thư giãn →
+            tối về Hà Nội. (Tuỳ nhu cầu, có thể thêm set ăn/xe đưa đón.)
+          </p>
+        </div>
+        <div class="box">
+          <h2>Lịch trình gợi ý: 2N1Đ</h2>
+          <p>
+            Ngày 1: nhận phòng, trải nghiệm khoáng, ăn tối.<br/>
+            Ngày 2: ăn sáng, check-out muộn (nếu có), mua đặc sản địa phương.
+          </p>
+        </div>
+      </div>
+      <p style="color:var(--muted);margin:10px 0 0;line-height:1.6">
+        Ghi chú: Bạn có thể mô tả rõ địa điểm là Bảo Yên, Thanh Thủy, Phú Thọ trên trang Liên hệ/Chỉ đường. :contentReference[oaicite:3]{index=3}
+      </p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <h2 style="margin:0;font-size:22px">Câu hỏi thường gặp</h2>
+      <div class="faq" style="display:grid;gap:10px;margin-top:12px">
+        <details>
+          <summary>Chính sách đổi ngày/hoàn như thế nào?</summary>
+          <p>Thiết kế trang “Chính sách” riêng: điều kiện đổi/hoàn theo từng loại sản phẩm (combo, thuê căn, vé khoáng).</p>
+        </details>
+        <details>
+          <summary>Đi 1 ngày thì nên đi khung giờ nào?</summary>
+          <p>Gợi ý 2 khung giờ (sáng đi – tối về) và “khung giờ vắng” để trải nghiệm thoải mái hơn.</p>
+        </details>
+        <details>
+          <summary>Ohayo Onsen & Spa là gì?</summary>
+          <p>Trang riêng mô tả trải nghiệm khoáng nóng/onsen thuộc khu nghỉ dưỡng. :contentReference[oaicite:4]{index=4}</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="panel pad">
+        <h2 style="margin:0 0 8px;font-size:22px">Nhận báo giá/đặt nhanh</h2>
+        <p style="margin:0;color:var(--muted);line-height:1.6">
+          Để tối ưu chuyển đổi, nên có: Hotline • Zalo • Form (tên, SĐT, ngày đi, nhu cầu) • Cam kết phản hồi.
+        </p>
+        <div class="search" style="margin-top:12px;grid-template-columns:1fr 1fr 1fr 1fr">
+          <div class="field"><label>Họ tên</label><input placeholder="VD: Nguyễn Văn A"/></div>
+          <div class="field"><label>Số điện thoại</label><input placeholder="VD: 09xx..."/></div>
+          <div class="field"><label>Ngày đi</label><input type="date"/></div>
+          <div class="field"><label>Nhu cầu</label>
+            <select>
+              <option>Combo 2N1Đ</option><option>Đi 1 ngày (vé khoáng)</option><option>Thuê căn hộ/villa</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <button class="btn primary" type="button" onclick="alert('Demo: gửi form về CRM/Zalo OA')">Gửi yêu cầu</button>
+<a class="btn" href="tel:0913056667">Gọi Hotline</a>
+<a class="btn" href="https://zalo.me/0913056667" target="_blank">Chat Zalo</a>
+<a class="btn dark" href="https://www.booking.com/hotel/vn/3-rooms-wyndham-lynn-times-tthanh-thuy-hot-spring-myhome.vi.html" target="_blank">
+  Đặt phòng trên Booking.com
+</a>
+
+        </div>
+      </div>
+
+      <p style="color:var(--muted);line-height:1.6;margin:10px 0 0">
+        Lưu ý thương hiệu: nếu bạn là đại lý/đơn vị bán dịch vụ, nên ghi rõ “đơn vị cung cấp/đối tác” và điều khoản sử dụng nhãn hiệu.
+      </p>
+    </div>
+  </section>
+</main>
+
+<div class="stickybar" role="navigation" aria-label="Thanh hành động nhanh">
+  <div class="row">
+    <a class="btn" href="tel:0913056667">Hotline</a>
+    <a class="btn" href="https://zalo.me/0913056667" target="_blank">Zalo</a>
+    <a class="btn primary" href="https://www.booking.com/hotel/vn/3-rooms-wyndham-lynn-times-tthanh-thuy-hot-spring-myhome.vi.html" target="_blank">
+      Đặt phòng
+    </a>
   </div>
 </div>
 
-<section id="combo">
-  <h2>Combo nghỉ dưỡng nổi bật</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="images/combo-2n1d.jpg" alt="Combo 2N1Đ Wyndham Thanh Thủy">
-      <div class="content">
-        <h3>Combo 2 ngày 1 đêm</h3>
-        <p>Phòng nghỉ + vé tắm khoáng + ăn sáng. Phù hợp đi cuối tuần.</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="images/combo-1day.jpg" alt="Combo đi trong ngày">
-      <div class="content">
-        <h3>Combo đi trong ngày</h3>
-        <p>Vé Ohayo Onsen – thư giãn và phục hồi sức khỏe.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="onsen">
-  <h2>Tắm khoáng nóng Ohayo Onsen</h2>
-  <p>Hệ thống khoáng nóng phong cách Nhật Bản, giúp thư giãn, cải thiện tuần hoàn và sức khỏe.</p>
-  <img src="images/onsen.jpg" alt="Ohayo Onsen Thanh Thủy" style="width:100%;border-radius:12px">
-</section>
-
-<section id="rental">
-  <h2>Thuê căn hộ – Villa nghỉ dưỡng</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="images/canho.jpg" alt="Căn hộ Wyndham Thanh Thủy">
-      <div class="content">
-        <h3>Căn hộ gia đình</h3>
-        <p>Không gian rộng rãi, tiện nghi, phù hợp nhóm 4–6 người.</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="images/villa.jpg" alt="Villa nghỉ dưỡng">
-      <div class="content">
-        <h3>Villa nghỉ dưỡng</h3>
-        <p>Riêng tư, cao cấp, thích hợp nghỉ dưỡng dài ngày.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Liên hệ & Đặt dịch vụ</h2>
-  <p><strong>Zalo tư vấn:</strong> <a href="https://zalo.me/0913056667" target="_blank">0913 056 667</a></p>
-  <p><strong>Hotline:</strong> 0913 056 667</p>
-  <p>
-    <a href="https://zalo.me/0913056667" target="_blank" class="btn">Chat Zalo ngay</a>
-    <a href="https://www.booking.com" target="_blank" class="btn" style="background:#003580">Đặt phòng / Giữ chỗ qua Booking.com</a>
-  </p>
-  <p>Địa điểm: Xã Bảo Yên, huyện Thanh Thủy, tỉnh Phú Thọ</p>
-</section>
 
 <footer>
-  © 2026 Wyndham Thanh Thủy – Website giới thiệu dịch vụ nghỉ dưỡng
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <div>© <span id="y"></span> Thanh Thủy Onsen Travel</div>
+      <div>Điều khoản • Chính sách • Bảo mật</div>
+    </div>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </footer>
-
-<a href="https://zalo.me/0913056667" target="_blank" class="zalo-float">💬 Chat Zalo</a>
 
 </body>
 </html>
